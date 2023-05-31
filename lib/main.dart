@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:learn_provider/main_home_screen.dart';
+import 'package:learn_provider/navbar/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:learn_provider/content_provider.dart';
-import 'package:learn_provider/main_home_screen.dart';
 import 'package:learn_provider/category_provider.dart';
 
 void main() {
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const MainHomeScreen(),
+      // home: const MainHomeScreen(),
+      home: const BottomHomeScreen(),
     );
   }
 }
