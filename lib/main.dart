@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:learn_provider/main_home_screen.dart';
 import 'package:learn_provider/navbar/home_screen.dart';
+import 'package:learn_provider/navbar/login_screen.dart';
+import 'package:learn_provider/navbar/people_model.dart';
+import 'package:learn_provider/navbar/search_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:learn_provider/content_provider.dart';
 import 'package:learn_provider/category_provider.dart';
@@ -13,19 +17,21 @@ void main() {
 
   /// For Multi Provider
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => CategoryProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ContentProvider(),
-        ),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  // runApp(
+  //   MultiProvider(
+  //     providers: [
+  //       ChangeNotifierProvider(
+  //         create: (context) => CategoryProvider(),
+  //       ),
+  //       ChangeNotifierProvider(
+  //         create: (context) => ContentProvider(),
+  //       ),
+  //     ],
+  //     child: const MyApp(),
+  //   ),
+  // );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,14 +39,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Provider Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
       // home: const MainHomeScreen(),
-      home: const BottomHomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
