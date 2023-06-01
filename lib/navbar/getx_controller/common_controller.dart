@@ -11,5 +11,20 @@ class CommonController extends GetxController {
 
   RxInt selectedIndex = 0.obs;
 
-  RxList<People> allPeople = <People>[].obs;
+  RxList<People> allPeopleList = <People>[].obs;
+
+  RxString searchText = "".obs;
+  final RxList<People> searchList = <People>[].obs;
+
+  void search() {
+    if (searchText.value.isNotEmpty) {
+      searchList.value = allPeopleList
+          .where((user) => user.name.toString().toLowerCase().contains(
+                searchText.value.toLowerCase(),
+              ))
+          .toList();
+    } else {
+      searchList.value = allPeopleList;
+    }
+  }
 }

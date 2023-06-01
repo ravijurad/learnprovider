@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_provider/navbar/getx_controller/common_controller.dart';
-import 'package:learn_provider/navbar/people_model.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -13,7 +12,13 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   CommonController commonControllerCnt = Get.put(CommonController());
 
-  List<People> peoples = allPeople;
+  @override
+  void initState() {
+    // TODO: implement initState
+    commonControllerCnt.searchText.value = "";
+    commonControllerCnt.search();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,24 +39,32 @@ class _SearchScreenState extends State<SearchScreen> {
                         elevation: MaterialStateProperty.all<double>(3.0),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.grey),
-                        onChanged: searchPeople,
+                        onChanged: (value) {
+                          commonControllerCnt.searchText.value = value;
+                          commonControllerCnt.search();
+                        },
                       ),
                     ),
                   ),
                   const SizedBox(width: 10.0),
-                  Container(
-                      height: 50,
-                      width: 50,
-                      decoration: const BoxDecoration(
-                          color: Colors.grey, shape: BoxShape.circle),
-                      child: const Icon(Icons.search)),
+                  InkWell(
+                    onTap: () {
+                      commonControllerCnt.search();
+                    },
+                    child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: const BoxDecoration(
+                            color: Colors.grey, shape: BoxShape.circle),
+                        child: const Icon(Icons.search)),
+                  ),
                 ],
               ),
               const SizedBox(height: 12.0),
               Expanded(
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: commonControllerCnt.allPeople.length,
+                  itemCount: commonControllerCnt.searchList.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
@@ -71,14 +84,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "${commonControllerCnt.allPeople[index].name}",
+                                      "${commonControllerCnt.searchList[index].name}",
                                       style: const TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     const SizedBox(height: 8.0),
                                     Text(
-                                      "${commonControllerCnt.allPeople[index].address}",
+                                      "${commonControllerCnt.searchList[index].address}",
                                       style:
                                           const TextStyle(color: Colors.grey),
                                     ),
@@ -102,17 +115,5 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
     );
-  }
-
-  searchPeople(String query) {
-    final searchList = allPeople.where((element) {
-      final title = element.name!.toLowerCase();
-      final input = query.toLowerCase();
-      return title.contains(input);
-    }).toList();
-
-    setState(() {
-      peoples = searchList;
-    });
   }
 }

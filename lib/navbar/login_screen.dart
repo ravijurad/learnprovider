@@ -34,14 +34,14 @@ class LoginScreen extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    commonControllerCnt.allPeople.add(People(
+                    commonControllerCnt.allPeopleList.add(People(
                         name: commonControllerCnt.nameController.value.text,
                         address:
                             commonControllerCnt.addressController.value.text,
                         mobileNumber: commonControllerCnt
                             .mobileNumberController.value.text));
 
-                    print("ALL PEOPLE ${commonControllerCnt.allPeople}");
+                    print("ALL PEOPLE ${commonControllerCnt.allPeopleList}");
 
                     Navigator.push(
                         context,
