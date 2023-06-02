@@ -3,18 +3,23 @@ import 'package:get/get.dart';
 import 'package:learn_provider/navbar/people_model.dart';
 
 class CommonController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  Rx<PageController> pageController = PageController().obs;
   Rx<TextEditingController> nameController = TextEditingController().obs;
+  Rx<TextEditingController> searchController = TextEditingController().obs;
   Rx<TextEditingController> addressController = TextEditingController().obs;
   Rx<TextEditingController> mobileNumberController =
       TextEditingController().obs;
-  Rx<PageController> pageController = PageController().obs;
 
   RxInt selectedIndex = 0.obs;
 
+  RxBool isSearchingOn = false.obs;
+
+  RxList<People> searchList = <People>[].obs;
   RxList<People> allPeopleList = <People>[].obs;
 
   RxString searchText = "".obs;
-  final RxList<People> searchList = <People>[].obs;
 
   void search() {
     if (searchText.value.isNotEmpty) {

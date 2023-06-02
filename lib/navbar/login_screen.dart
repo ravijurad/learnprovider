@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:learn_provider/navbar/getx_controller/common_controller.dart';
 import 'package:learn_provider/navbar/home_screen.dart';
 import 'package:learn_provider/navbar/people_model.dart';
@@ -15,42 +15,141 @@ class LoginScreen extends StatelessWidget {
       () => Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: commonControllerCnt.nameController.value,
-                decoration: const InputDecoration(hintText: "Enter your name"),
-              ),
-              TextField(
-                controller: commonControllerCnt.addressController.value,
-                decoration:
-                    const InputDecoration(hintText: "Enter your address"),
-              ),
-              TextField(
-                controller: commonControllerCnt.mobileNumberController.value,
-                decoration:
-                    const InputDecoration(hintText: "Enter your mobile number"),
-              ),
-              ElevatedButton(
+          child: Form(
+            key: commonControllerCnt.formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                /// Name
+
+                TextFormField(
+                  controller: commonControllerCnt.nameController.value,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.purple.shade100,
+                    hintText: "Enter your name",
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.purple.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.purple.shade900),
+                    ),
+                  ),
+                  // validator: (value) {
+                  //   if (value != "111") {
+                  //     return "ddddd";
+                  //   }
+                  //   return null;
+                  // },
+                ),
+                const SizedBox(height: 20.0),
+
+                // /// Address
+                //
+                // TextFormField(
+                //   controller: commonControllerCnt.addressController.value,
+                //   decoration: InputDecoration(
+                //     filled: true,
+                //     fillColor: Colors.purple.shade100,
+                //     hintText: "Enter your address",
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius:
+                //           const BorderRadius.all(Radius.circular(12.0)),
+                //       borderSide: BorderSide(color: Colors.purple.shade200),
+                //     ),
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius:
+                //           const BorderRadius.all(Radius.circular(12.0)),
+                //       borderSide: BorderSide(color: Colors.purple.shade900),
+                //     ),
+                //     border: const OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                //       borderSide: BorderSide(color: Colors.red),
+                //     ),
+                //     errorBorder: const OutlineInputBorder(
+                //       borderSide: BorderSide(color: Colors.red),
+                //       borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                //     ),
+                //   ),
+                //   // validator: (value) {
+                //   //   if (value != "111") {
+                //   //     return "ddddd";
+                //   //   }
+                //   //   return null;
+                //   // },
+                // ),
+                // const SizedBox(height: 20.0),
+
+                /// Mobile Number
+
+                TextFormField(
+                  keyboardType: TextInputType.phone,
+                  controller: commonControllerCnt.mobileNumberController.value,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.purple.shade100,
+                    hintText: "Enter your mobile number",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.purple.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.purple.shade900),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    ),
+                  ),
+                  // validator: (value) {
+                  //   if (value != "111") {
+                  //     return "ddddd";
+                  //   }
+                  //   return null;
+                  // },
+                ),
+                const SizedBox(height: 40.0),
+                ElevatedButton(
                   onPressed: () {
-                    commonControllerCnt.allPeopleList.add(People(
-                        name: commonControllerCnt.nameController.value.text,
-                        address:
-                            commonControllerCnt.addressController.value.text,
-                        mobileNumber: commonControllerCnt
-                            .mobileNumberController.value.text));
-
-                    print("ALL PEOPLE ${commonControllerCnt.allPeopleList}");
-
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainScreen(),
-                        ));
+                    if (commonControllerCnt.formKey.currentState!.validate()) {
+                      commonControllerCnt.allPeopleList.add(People(
+                          name: commonControllerCnt.nameController.value.text,
+                          address:
+                              commonControllerCnt.addressController.value.text,
+                          mobileNumber: commonControllerCnt
+                              .mobileNumberController.value.text));
+                      commonControllerCnt.selectedIndex.value = 0;
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MainScreen(),
+                          ),
+                          (route) => false);
+                    }
                   },
-                  child: const Text("LOGIN"))
-            ],
+                  child: const Text("LOGIN"),
+                )
+              ],
+            ),
           ),
         ),
       ),

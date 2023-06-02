@@ -24,42 +24,44 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        appBar: AppBar(title: const Text("Search People"), elevation: 0.0),
+        appBar: AppBar(
+          elevation: 0.0,
+          toolbarHeight: 100,
+          title: SearchBar(
+            trailing: [
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: commonControllerCnt.searchText.isEmpty
+                    ? const Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      )
+                    : InkWell(
+                        onTap: () {
+                          commonControllerCnt.searchController.value.clear();
+                          commonControllerCnt.searchText.value = "";
+                          commonControllerCnt.search();
+                        },
+                        child: const Icon(Icons.clear)),
+              )
+            ],
+            hintText: "Search people by their name",
+            textStyle: MaterialStateProperty.all<TextStyle>(
+                const TextStyle(fontSize: 17)),
+            controller: commonControllerCnt.searchController.value,
+            elevation: MaterialStateProperty.all<double>(3.0),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.purple.shade200),
+            onChanged: (value) {
+              commonControllerCnt.searchText.value = value;
+              commonControllerCnt.search();
+            },
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      height: 50,
-                      child: SearchBar(
-                        hintText: "Search People",
-                        elevation: MaterialStateProperty.all<double>(3.0),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.grey),
-                        onChanged: (value) {
-                          commonControllerCnt.searchText.value = value;
-                          commonControllerCnt.search();
-                        },
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10.0),
-                  InkWell(
-                    onTap: () {
-                      commonControllerCnt.search();
-                    },
-                    child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                            color: Colors.grey, shape: BoxShape.circle),
-                        child: const Icon(Icons.search)),
-                  ),
-                ],
-              ),
               const SizedBox(height: 12.0),
               Expanded(
                 child: ListView.builder(
@@ -98,9 +100,15 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ],
                                 ),
                               ),
-                              Chip(
-                                label: const Text("View Profile"),
-                                backgroundColor: Colors.yellow.shade300,
+                              InkWell(
+                                onTap: () {
+                                  print(
+                                      "INDIVIDUAL DETAILS ${commonControllerCnt.searchList[index]}");
+                                },
+                                child: Chip(
+                                  label: const Text("View Profile"),
+                                  backgroundColor: Colors.yellow.shade300,
+                                ),
                               ),
                             ],
                           ),
