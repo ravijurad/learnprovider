@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
       title: 'Provider Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: "Poppins",
         primarySwatch: Colors.purple,
       ),
       // home: const MainHomeScreen(),

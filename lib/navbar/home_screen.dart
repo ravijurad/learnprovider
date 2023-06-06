@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learn_provider/navbar/color_utils.dart';
 import 'package:learn_provider/navbar/getx_controller/common_controller.dart';
 import 'package:learn_provider/navbar/my_profile.dart';
 import 'package:learn_provider/navbar/search_screen.dart';
@@ -41,7 +42,8 @@ class MainScreen extends StatelessWidget {
                     curve: Curves.easeOutQuad);
               },
               iconSize: 30,
-              activeColor: Colors.purple,
+              // activeColor: Colors.purple,
+              activeColor: ColorUtil.primaryColor,
               // inactiveColor: Colors.purple.shade200,
               selectedIndex: commonControllerCnt.selectedIndex.value,
               barItems: [

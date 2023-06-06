@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:learn_provider/navbar/people_model.dart';
 
 class CommonController extends GetxController {
@@ -30,6 +33,23 @@ class CommonController extends GetxController {
           .toList();
     } else {
       searchList.value = allPeopleList;
+    }
+  }
+
+  /// IMAGE
+
+  // https://cdn.pixabay.com/photo/2023/02/28/19/22/drawing-7821641_640.jpg
+
+  var selectedImagePath = "".obs;
+  RxBool isImageSelected = false.obs;
+
+  void getImage(ImageSource imageSource) async {
+    final pickedFile = await ImagePicker().pickImage(source: imageSource);
+    if (pickedFile != null) {
+      selectedImagePath.value = pickedFile.path;
+    } else {
+      Get.snackbar("Error", "No Image Has Been Selected",
+          backgroundColor: Colors.red);
     }
   }
 }

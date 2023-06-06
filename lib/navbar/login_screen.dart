@@ -56,41 +56,41 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
 
-                // /// Address
-                //
-                // TextFormField(
-                //   controller: commonControllerCnt.addressController.value,
-                //   decoration: InputDecoration(
-                //     filled: true,
-                //     fillColor: Colors.purple.shade100,
-                //     hintText: "Enter your address",
-                //     enabledBorder: OutlineInputBorder(
-                //       borderRadius:
-                //           const BorderRadius.all(Radius.circular(12.0)),
-                //       borderSide: BorderSide(color: Colors.purple.shade200),
-                //     ),
-                //     focusedBorder: OutlineInputBorder(
-                //       borderRadius:
-                //           const BorderRadius.all(Radius.circular(12.0)),
-                //       borderSide: BorderSide(color: Colors.purple.shade900),
-                //     ),
-                //     border: const OutlineInputBorder(
-                //       borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                //       borderSide: BorderSide(color: Colors.red),
-                //     ),
-                //     errorBorder: const OutlineInputBorder(
-                //       borderSide: BorderSide(color: Colors.red),
-                //       borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                //     ),
-                //   ),
-                //   // validator: (value) {
-                //   //   if (value != "111") {
-                //   //     return "ddddd";
-                //   //   }
-                //   //   return null;
-                //   // },
-                // ),
-                // const SizedBox(height: 20.0),
+                /// Address
+
+                TextFormField(
+                  controller: commonControllerCnt.addressController.value,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.purple.shade100,
+                    hintText: "Enter your address",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.purple.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.purple.shade900),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    ),
+                  ),
+                  // validator: (value) {
+                  //   if (value != "111") {
+                  //     return "ddddd";
+                  //   }
+                  //   return null;
+                  // },
+                ),
+                const SizedBox(height: 20.0),
 
                 /// Mobile Number
 
