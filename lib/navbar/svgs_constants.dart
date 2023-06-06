@@ -4,6 +4,10 @@ class Constants {
 
 class Images {
   static const String edit = "${Constants.imagePath}write-svgrepo-com.svg";
+  static const String user = "${Constants.imagePath}user-03-svgrepo-com.svg";
+  static const String address = "${Constants.imagePath}map-pin-svgrepo-com.svg";
+  static const String mobileNumber =
+      "${Constants.imagePath}phone-svgrepo-com.svg";
 
   // static const String alert = "${Constants.imagePath}Alert.svg";
   // static const String backArrow = "${Constants.imagePath}Arrow.svg";

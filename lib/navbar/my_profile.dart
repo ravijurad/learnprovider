@@ -195,81 +195,7 @@ class _MyProfileState extends State<MyProfile> {
                   )
                 ],
               ),
-              const SizedBox(height: 150),
-              Text(commonControllerCnt.nameController.value.text[0]
-                  .toUpperCase()),
-              commonControllerCnt.selectedImagePath.value.isEmpty
-                  ? const Text("EMPTY")
-                  : const Text("IMAGE"),
-              // Card(
-              //   elevation: 4.0,
-              //   margin: const EdgeInsets.all(30.0),
-              //   shadowColor: ColorUtil.secondaryColor,
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(15.0),
-              //     child: Column(
-              //       children: [
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //           children: [
-              //             const Text(
-              //               "NAME : ",
-              //               style: TextStyle(
-              //                   fontSize: 21, fontWeight: FontWeight.bold),
-              //             ),
-              //             const Spacer(),
-              //             Expanded(
-              //                 child: Text(
-              //                     maxLines: 2,
-              //                     textAlign: TextAlign.end,
-              //                     overflow: TextOverflow.ellipsis,
-              //                     commonControllerCnt.nameController.value.text))
-              //           ],
-              //         ),
-              //         const Divider(
-              //           // color: Colors.deepPurple,
-              //           color: ColorUtil.secondaryColor,
-              //         ),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //           children: [
-              //             const Text(
-              //               "ADDRESS : ",
-              //               style: TextStyle(
-              //                   fontSize: 21, fontWeight: FontWeight.bold),
-              //             ),
-              //             const Spacer(),
-              //             Expanded(
-              //                 child: Text(
-              //               maxLines: 3,
-              //               textAlign: TextAlign.end,
-              //               overflow: TextOverflow.ellipsis,
-              //               commonControllerCnt.addressController.value.text,
-              //             ))
-              //           ],
-              //         ),
-              //         const Divider(
-              //           // color: Colors.deepPurple,
-              //           color: ColorUtil.secondaryColor,
-              //         ),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //           children: [
-              //             const Text(
-              //               "MOBILE NUMBER : ",
-              //               style: TextStyle(
-              //                   fontSize: 21, fontWeight: FontWeight.bold),
-              //             ),
-              //             const Spacer(),
-              //             Text(commonControllerCnt
-              //                 .mobileNumberController.value.text)
-              //           ],
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 100),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
@@ -292,11 +218,15 @@ class _MyProfileState extends State<MyProfile> {
                             Expanded(
                               child: Row(
                                 children: [
-                                  const Icon(Icons.person),
-                                  const SizedBox(width: 8.0),
+                                  const SvgIcon(
+                                    Images.user,
+                                    height: 35,
+                                  ),
+                                  const SizedBox(width: 16.0),
                                   Text(
                                     'NAME',
                                     style: TextStyle(
+                                        fontSize: 17,
                                         color: Theme.of(context)
                                             .snackBarTheme
                                             .backgroundColor,
@@ -335,11 +265,15 @@ class _MyProfileState extends State<MyProfile> {
                             Expanded(
                               child: Row(
                                 children: [
-                                  const Icon(Icons.person),
-                                  const SizedBox(width: 8.0),
+                                  const SvgIcon(
+                                    Images.address,
+                                    height: 35,
+                                  ),
+                                  const SizedBox(width: 16.0),
                                   Text(
                                     'ADDRESS',
                                     style: TextStyle(
+                                        fontSize: 17,
                                         color: Theme.of(context)
                                             .snackBarTheme
                                             .backgroundColor,
@@ -379,11 +313,15 @@ class _MyProfileState extends State<MyProfile> {
                             Expanded(
                               child: Row(
                                 children: [
-                                  const Icon(Icons.person),
-                                  const SizedBox(width: 8.0),
+                                  const SvgIcon(
+                                    Images.mobileNumber,
+                                    height: 35,
+                                  ),
+                                  const SizedBox(width: 16.0),
                                   Text(
                                     'MOBILE NUMBER',
                                     style: TextStyle(
+                                        fontSize: 17,
                                         color: Theme.of(context)
                                             .snackBarTheme
                                             .backgroundColor,
